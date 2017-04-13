@@ -10,8 +10,7 @@ import (
 	"time"
 
 	"github.com/kr/beanstalk"
-
-	"lor/mq"
+	"github.com/martinz0/lor/mq"
 )
 
 type Conn struct {

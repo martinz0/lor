@@ -5,8 +5,6 @@ import (
 	"reflect"
 	"testing"
 	"time"
-
-	"github.com/kr/beanstalk"
 )
 
 var testToBytesCases = []struct {
@@ -46,11 +44,7 @@ func TestBeanstalk(t *testing.T) {
 		}
 	}
 
-	client, err := Dial("localhost:11300")
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer client.Close()
+	client := Dial("localhost:11300")
 
 	b := time.Now()
 	for i := 0; i < 1000; i++ {
@@ -61,11 +55,12 @@ func TestBeanstalk(t *testing.T) {
 	log.Println(time.Since(b))
 
 	b = time.Now()
-	tubeSet := beanstalk.NewTubeSet(client.Conn, "lor.mq.beanstalk.1")
-	for i := 0; i < 15000; i++ {
-		errorReporter(client.get(func(data []byte) error {
-			return nil
-		}, tubeSet))
-	}
-	log.Println(time.Since(b))
+	i := make(chan struct{}, 15000)
+	client.ForEach(func(data []byte) error {
+		i <- struct{}{}
+		if len(i) >= 15000 {
+			log.Println(time.Since(b))
+		}
+		return nil
+	}, 10, "lor.mq.beanstalk.1")
 }

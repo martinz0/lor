@@ -1,0 +1,11 @@
+*
+
+!*/
+
+!.gitignore
+
+!*.go
+
+!lock.json
+
+vendor

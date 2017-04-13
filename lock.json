@@ -1,0 +1,13 @@
+{
+    "memo": "3b2159228d8799d80a2069b1be5ae98f535f3fb5307af000a30d90ed245d11cd",
+    "projects": [
+        {
+            "name": "github.com/kr/beanstalk",
+            "branch": "master",
+            "revision": "e99e1a384e4ace0401329ea37f702a2904990f91",
+            "packages": [
+                "."
+            ]
+        }
+    ]
+}

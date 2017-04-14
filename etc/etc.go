@@ -34,3 +34,7 @@ func Bool(key string) bool {
 func String(key string) string {
 	return Get(key).(string)
 }
+
+func Int(key string) int {
+	return Get(key).(int)
+}

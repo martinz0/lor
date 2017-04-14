@@ -6,12 +6,7 @@ import (
 )
 
 func TestEtc(t *testing.T) {
-	ctl := make(chan struct{}, 5)
-	for {
-		ctl <- struct{}{}
-		log.Println(Bool("system.dev"))
-		<-ctl
-	}
+	log.Println(Bool("system.dev"))
 }
 
 func BenchmarkGet(b *testing.B) {

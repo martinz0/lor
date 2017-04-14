@@ -23,6 +23,14 @@ func Get(key string) interface{} {
 	return nil
 }
 
+func Dev() bool {
+	return Bool("system.dev")
+}
+
 func Bool(key string) bool {
 	return Get(key).(bool)
+}
+
+func String(key string) string {
+	return Get(key).(string)
 }

@@ -64,3 +64,11 @@ func TestBeanstalk(t *testing.T) {
 		return nil
 	}, 10, "lor.mq.beanstalk.1")
 }
+
+func TestLog(t *testing.T) {
+	client := Dial("localhost:11300")
+	client.ForEach(func(data []byte) error {
+		log.Println(string(data))
+		return nil
+	}, 1, "lor.log")
+}

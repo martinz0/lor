@@ -9,4 +9,8 @@
 !lock.json
 !manifest.json
 
+!*.html
+!*.js
+!*.css
+
 vendor
